@@ -1,8 +1,9 @@
 import express from 'express';
-import { analyzeText } from '../controllers/text-controller';
-import rateLimitMiddleware from '../middlewares/rateLimit-middleware';
+import { analyzeText,addText } from '../controllers/text-controller.js';
+import rateLimitMiddleware from '../middlewares/rateLimit-middleware.js';
 const router = express.Router();
 
 router.get('/:id', rateLimitMiddleware, analyzeText);
+router.post('/texts', rateLimitMiddleware, addText);
 
 export default router;

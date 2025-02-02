@@ -1,14 +1,14 @@
-import Text from '../models/text-model';
-//import redis from '../config/cache';
-import { countWords, countCharacters, countSentences, countParagraphs, findLongestWord } from '../utils/analyze-util-services';
+import Text from '../models/text-model.js';
+import redis from '../config/cache.js';
+import { countWords, countCharacters, countSentences, countParagraphs, findLongestWord } from '../utils/analyze-util-services.js';
 
 export async function textAnalyser(id: string) {
   const cacheKey = `text-analysis-${id}`;
-  //const cachedData = await redis.get(cacheKey);
+  const cachedData = await redis.get(cacheKey);
 
-//   if (cachedData) {
-//     return JSON.parse(cachedData);
-//   }
+  if (cachedData) {
+    return JSON.parse(cachedData);
+  }
 
   const textEntry = await Text.findById(id);
   if (!textEntry) throw new Error('Text not found');
@@ -21,6 +21,6 @@ export async function textAnalyser(id: string) {
     longestWord: findLongestWord(textEntry.content),
   };
 
-  //await redis.setex(cacheKey, 3600, JSON.stringify(analysis));
+  await redis.setEx(cacheKey, 3600, JSON.stringify(analysis));
   return analysis;
 }
