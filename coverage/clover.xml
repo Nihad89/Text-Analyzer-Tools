@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1738479034395" clover="3.2.0">
+  <project timestamp="1738479034395" name="All files">
+    <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8" elements="19" coveredelements="19" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
+    <file name="analyze-util-services.ts" path="C:\Users\USER\text-analyzer-tool\src\utils\analyze-util-services.ts">
+      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+      <line num="2" count="5" type="stmt"/>
+      <line num="3" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="11" count="14" type="stmt"/>
+      <line num="15" count="7" type="stmt"/>
+      <line num="19" count="5" type="stmt"/>
+      <line num="20" count="14" type="cond" truecount="2" falsecount="0"/>
+    </file>
+  </project>
+</coverage>
