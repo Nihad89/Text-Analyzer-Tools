@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { textAnalyser } from '../services/text-service.js';
+import { CharacterCount, LongestWord, ParagraphCount, SentenceCount, textAnalyser,WordCount } from '../services/text-service.js';
 import TextModel from '../models/text-model.js';
 
 export async function analyzeText(req: Request, res: Response) {
@@ -12,7 +12,55 @@ export async function analyzeText(req: Request, res: Response) {
   }
 }
 
+export async function getWordCount(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const analysis = await WordCount(id);
+    res.json(analysis);
+  } catch (error) {
+    res.status(404).json({ message: (error as Error).message });
+  }
+}
 
+export async function getCharacterCount(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const analysis = await CharacterCount(id);
+    res.json(analysis);
+  } catch (error) {
+    res.status(404).json({ message: (error as Error).message });
+  }
+}
+
+export async function getSentenceCount(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const analysis = await SentenceCount(id);
+    res.json(analysis);
+  } catch (error) {
+    res.status(404).json({ message: (error as Error).message });
+  }
+}
+
+export async function getParagraphCount(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const analysis = await ParagraphCount(id);
+    res.json(analysis);
+  } catch (error) {
+    res.status(404).json({ message: (error as Error).message });
+  }
+}
+
+export async function getLongestWord(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const analysis = await LongestWord(id);
+    res.json(analysis);
+  } catch (error) {
+    res.status(404).json({ message: (error as Error).message });
+  }
+}
 
 
 export const addText = async (req: Request, res: Response): Promise<void> => {
