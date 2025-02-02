@@ -12,3 +12,4 @@ const TextSchema = new Schema({
 });
 
 export const Text = model<IText>('Text', TextSchema);
+export default Text;
